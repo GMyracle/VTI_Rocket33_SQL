@@ -9,16 +9,26 @@ CREATE TABLE IF NOT EXISTS Department (
 -- insert data for table Department
  INSERT INTO Department(Department_name) 
  VALUES
- ('Sale'),
- ('Kế Toán'),
- ('Nhân sự'),
- ('Quan hệ khách hàng'),
- ('Giám đốc'),
- ('Bảo vệ'),
- ('Thư kí'),
- ('Chất Lượng'),
- ('An ninh thông tin'), 
- ('Kỹ Thuật'); 
+ ('Marketing'),
+	('Sale'),
+    ('Phát triển'),
+    ('Nhân sự'),
+    ('Kỹ thuật'),
+    ('Tài chính'),
+    ('Phó giám đốc'),
+    ('Giám đốc'),
+    ('Thư kí'),
+    ('Bảo vệ'),
+	('Phòng A1'),
+	('Phòng A2'),
+    ('Phòng A3'),
+    ('Phòng A4'),
+    ('Phòng A5'),
+    ('Phòng B1'),
+    ('Phòng B2'),
+    ('Phòng B3'),
+    ('Phòng B4'),
+    ('Phòng B5');
  SELECT * FROM	Department;
  
 CREATE TABLE IF NOT EXISTS `Position` (
@@ -33,7 +43,7 @@ Position_name      ENUM('DEV','TEST', 'SCRUM MASTER', 'PM') UNIQUE KEY NOT NULL
  ('SCRUM MASTER'),
  ('PM');
   SELECT * FROM  `Position`;
- 
+
 CREATE TABLE IF NOT EXISTS `Account`(
 Account_id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 Email              VARCHAR(30) UNIQUE KEY  NOT NULL,
@@ -45,19 +55,43 @@ CreateDate         DATE NOT NULL,
 FOREIGN KEY (Department_id) REFERENCES Department(Department_id),
 FOREIGN KEY (Position_id) REFERENCES `Position` (Position_id)
 );
+TRUNCATE TABLE `Account`;
 -- insert data into table Account
- INSERT INTO `Account` ( `Email`, `Username`, `Fullname`, `Department_id`, `Position_id`, `CreateDate`) 
+ INSERT INTO `Account` ( `Email`, `Username`, `Fullname`, `Department_id`, `Position_id`, `CreateDate` ) 
 VALUES
-( 'gianghoang22@gmail.com', 'Giang', 'Hoang Giang', '1', '2', '2020-10-11'),
-( 'nhitran2@gmail.com', 'Nhi', 'Hoang Tran Nhi', '2', '2', '2019-09-11'),
-( 'ngocha72@gmail.com', 'Ha', 'Bui Ngoc Ha', '3', '2', '2018-03-07'),
-( 'linhtrang442@gmail.com', 'Trang', 'Nguyen Linh Trang', '1', '1','2017-03-09'),
-( 'vantung23@gmail.com', 'Tung', 'Nguyễn  Văn Tùng', '1', '3', '2019-09-01'),
-( 'khanhlinh33@gmail.com', 'Linh', 'Nguyen Khanh Linh', '4', '2', '2018-09-12'),
-( 'tramy6423@gmail.com', 'My', 'Bui My', '2', '1', '2020-03-09'),
-( 'tranthanh2244@gmail.com', 'Thanh', 'Tran thanh', '3', '4','2022-11-03'),
-( 'thienthien2322@gmail.com', 'Thien', 'Thien Thien', '4', '4', '2023-01-05'),
-( 'tiendat2255@gmail.com', 'Dat', 'Tien Dat', '5', '3', '2022-11-04');
+    ('nguyenhong@gmail.com'		, 'NguyenHong'		, 'Nguyễn Thị Hồng'		, 3, 2,  '2018-02-04'),
+	('nguyenhoa@gmail.com'		, 'NguyenHoa'		, 'Nguyễn Thị Hoa'		, 1, 3,  '2019-02-04'),
+	('phamhue@gmail.com'		, 'PhamHue'			, 'Phạm Thị Huệ'		, 1, 2,  '2019-02-04'),
+	('hoangnha@gmail.com'		, 'HoangNha'		, 'Hoàng Phong Nhã'		, 6, 4,  '2019-02-04'),
+	('nguyendong@gmail.com'		, 'NguyenDong'		, 'Nguyễn Văn Đông'		, 8, 1,  '2019-02-04'),
+	('tranthanhphong@gmail.com'	, 'ThanhPhong'		, 'Trần Thanh Phong'	, 4, 2,  '2019-02-04'),
+	('tranminhnguyet@gmail.com'	, 'MinhNguyet'		, 'Trần Minh Nguyệt'	, 7, 3,  '2017-02-04'),
+	('nguyenan@gmail.com'		, 'NguyenAn'		, 'Nguyễn Văn An'		, 9, 2,  '2018-02-04'),
+	('tranthithu@gmail.com'		, 'ThiThu'			, 'Trần Thị Thu'		, 5, 3,  '2012-02-04'),
+	('thungan@gmail.com'		, 'ThuNgan'			, 'Phạm Thu Ngân'		, 2, 4,  '2016-02-04'),
+	('ngocha96@gmail.com'		, 'NgocHa96'		, 'Nguyễn Ngọc Hà'		, 13, 2, '2012-02-04'),
+	('nguyenhuong12@gmail.com'	, 'HuongNguyen'		, 'Nguyễn Thanh Hương'	, 2, 2,  '2016-02-04'),
+	('huongnhai@gmail.com'		, 'HuongNhai'		, 'Phạm Hương Nhài'		, 2, 3,  '2015-02-04'),
+	('nhadan@gmail.com'			, 'NhaDan'			, 'Hoàng Nhã Đan'		, 16, 4, '2014-02-04'),
+	('ngocanh@gmail.com'		, 'AnhNgoc'			, 'Nguyễn Ngọc Ánh'		, 18, 1, '2013-02-04'),
+	('hoathanh@gmail.com'		, 'HoaThanh'		, 'Trần Thanh Hòa'		, 14, 2, '2019-02-04'),
+	('minhanhtran@gmail.com'	, 'MinhAn'			, 'Trần Minh An'		, 17, 3, '2012-02-04'),
+	('thanhanhnguyen@gmail.com'	, 'ThanhAnh'		, 'Nguyễn Thanh Anh'	, 19, 2, '2011-02-04'),
+	('nguyenhuong@gmail.com'	, 'NguyenHuong'		, 'Trần Thị Hường'		, 15, 3, '2016-02-04'),
+	('thanhlong@gmail.com'		, 'ThanhLong'		, 'Phạm Thanh Long'		, 20, 4, '2012-02-04'),
+	('thaiha@gmail.com'			, 'ThaiHa'			, 'Nguyễn Thái Hà'		, 13, 2, '2012-02-04'),
+	('thanhthao@gmail.com'		, 'ThanhThao'		, 'Nguyễn Thanh Thảo'	, 11, 2, '2021-02-04'),
+	('thuhuongpham@gmail.com'	, 'ThuHuongPham'	, 'Phạm Thu Hương'		, 11, 3, '2022-02-04'),
+	('anhvu@gmail.com'			, 'AnhVu'			, 'Hoàng Anh Vũ'		, 16, 4, '2020-02-04'),
+	('anhthu@gmail.com'			, 'AnhThu'			, 'Nguyễn Anh Thư'		, 20, 2, '2022-02-04'),
+	('thanhhoatran@gmail.com'	, 'HoaTran'			, 'Trần Thanh Hoa'		, 14, 1, '2023-02-04'),
+	('tranthienan@gmail.com'	, 'ThienAnTran'		, 'Trần Thiên Ân'		, 17, 3, '2021-02-04'),
+	('nguyenmocmien@gmail.com'	, 'MocMien'			, 'Nguyễn Mộc Miên'		, 20, 2, '2020-02-04'),
+	('thuhuongtran@gmail.com'	, 'ThuHuong'		, 'Trần Thu Hường'		, 15, 2, '2020-02-04'),
+	('thanhngoc@gmail.com'		, 'ThanhNgoc'		, 'Phạm Thanh Ngọc'		, 20, 4, '2019-02-04'),
+	('thanhhuong01@gmail.com'	, 'ThanhHuong'		, 'Nguyễn Thanh Hương'	, 3	, 3, '2019-02-04'),
+	('dangdao@gmail.com'		, 'DaoDang'			, 'Đặng Thanh Đào'		, 2	, 1, '2011-02-04');
+    
 SELECT * FROM `Account`;
 
 CREATE TABLE IF NOT EXISTS `Group`(
@@ -69,11 +103,21 @@ Create_date       DATE NOT NULL
 -- insert data into  table Group
 INSERT INTO `Group`(Group_name, Creator_id, Create_date) 
 VALUES
-('Testing', '1','2020-01-21'),
-('Leader', '2', '2019-01-03'),
-('Project', '3', '2018-01-21'),
-('Marketing', '4', '2021-01-07'),
-('Sale', '5', '2019-01-31');
+('Nhóm A'	, 1, '2019-02-04'	),
+	('Nhóm B'	, 5,  '2018-02-04'),
+	('Nhóm C'	, 3,  '2019-02-04'),
+	('Nhóm D'	, 4,  '2019-02-04'),
+	('Nhóm E'	, 7	, '2017-02-04'),
+	('Nhóm A1'	, 11, '2016-02-04'),
+	('Nhóm B1'	, 15, '2020-02-04'),
+	('Nhóm C1'	, 13, '2021-02-04'),
+	('Nhóm D1'	, 14, '2022-02-04'),
+	('Nhóm E1'	, 17, '2023-02-04'),
+	('Nhóm A2'	, 18, '2017-02-04'),
+	('Nhóm B2'	, 19, '2016-02-04'),
+	('Nhóm C2'	, 20, '2015-02-04'),
+	('Nhóm D2'	, 12, '2012-02-04'),
+	('Nhóm E2'	, 16, '2018-02-04');
 SELECT * FROM `Group`;
 
 CREATE TABLE IF NOT EXISTS GroupAccount(
@@ -87,11 +131,26 @@ FOREIGN KEY (Account_id) REFERENCES `Account`(Account_id)
 -- insert data into table GroupAccount
 INSERT INTO GroupAccount (Group_id, Account_id)
 VALUES					
- ('1', '1'),
- ('1', '2'),
- ('3', '3'),
- ('3', '4'),
- ('5', '3');
+    (1	, 1),
+	(1	, 2),
+	(2	, 5),
+	(2	, 9),
+	(2	, 1),
+	(3	, 6),
+	(2	, 4),
+	(4	, 8),
+	(5	, 7),
+	(5	, 10),
+	(6	, 21),
+	(7	, 22),
+	(8	, 25),
+	(9	, 29),
+	(10	, 23),
+	(11	, 26),
+	(12	, 24),
+	(2	, 15),
+	(14	, 27),
+	(2	, 28);
 SELECT * FROM GroupAccount;
 
 CREATE TABLE IF NOT EXISTS TypeQuestion(
@@ -112,11 +171,26 @@ CateQuestion_name     NVARCHAR(20) NOT NULL
 -- insert data into table CategoryQuestion
 INSERT INTO CategoryQuestion(CateQuestion_name )
 VALUES
-('Java'),
-('.NET'),
-('SQL'),
-('Postman'),
-('Ruby');
+    ('Java'),
+	('.NET'),
+	('SQL'),
+	('Postman'),
+	('Ruby'),
+	('VBA'),
+	('C#'),
+	('js'),
+	('PHP'),
+	('Python'),
+	('Jquery'),
+	('React'),
+	('Html'),
+	('Css'),
+	('C++'),
+	('C'),
+	('Bootstrap'),
+	('Vue'),
+	('NodeJs'),
+	('Angular');
 SELECT * FROM	CategoryQuestion;
 
 
@@ -132,13 +206,26 @@ FOREIGN KEY (CateQuestion_id) REFERENCES CategoryQuestion(CateQuestion_id),
 FOREIGN KEY (Type_id) REFERENCES TypeQuestion(Type_id)
 );
 -- insert data into table Questions
+TRUNCATE TABLE Questions;
 INSERT INTO Questions(Content, CateQuestion_id, Type_id, Creator_id)
 VALUES
-('Câu hỏi về Java', 1, '1', '1'),
-('Câu hỏi về .NET', 2, '1', '3'),
-('Câu hỏi về SQL', 3, '2', '2'),
-('Câu hỏi về Postman', 5, '2', '4'),
-('Câu hỏi về Ruby', 4, '1', '5');
+    ('content test 1'			, 2	, 1, 1),
+	('content test 2'			, 4	, 2, 3),
+	('content test 3'			, 3	, 1, 3),
+	('content test 4'			, 5	, 1, 7),
+	('content test 5'			, 8	, 1, 7),
+	('content test 6'			, 7	, 1, 7),
+	('content test 7'			, 6	, 1, 4),
+	('content question test 8'	, 12, 2, 11),
+	('content question test 9'	, 14, 1, 13),
+	('câu hỏi question test 10'	, 13, 1, 12),
+	('content question test 11'	, 15, 1, 5),
+	('câu hỏi question test 12'	, 18, 2, 18),
+	('câu hỏi question test 13'	, 19, 1, 17),
+	('content question test 14'	, 15, 2, 16),
+	('câu hỏi question test 15'	, 18, 1, 18),
+	('content question test 16'	, 17, 1, 5),
+	('câu hỏi question test 17'	, 20, 1, 14);
 SELECT * FROM Questions;
 
 CREATE TABLE IF NOT EXISTS Answer(
@@ -149,15 +236,30 @@ is_correct       BIT NOT NULL,
 FOREIGN KEY (quest_id) REFERENCES Questions(quest_id)
 );
 -- insert data for table Answer
+TRUNCATE TABLE Answer;
 INSERT INTO	Answer ( Content, quest_id, is_correct)
 VALUES
-('Java là ngôn ngữ hướng đối tượng', 1, 1),
-('.NET không phải ngôn ngữ được viết bởi Microsoft', 1, 0),
-('SQL là ngôn ngữ lập trình phục vụ việc lưu trữ và xử lý thông tin trong cơ sở dữ liệu quan hệ', 1, 1),
-('Postman là một loại công cụ cho phép người dùng có thể thao tác với API', 2 , 0),
-('Ruby là ngôn ngữ hướng đối tượng, linh hoạt', 1, 1);
+('content answer test 1', 2	, 1),
+	('content answer test 2', 3	, 1),
+	('content answer test 3', 3	, 1),
+	('content answer test 4', 3	, 0),
+	('content answer test 5', 1	, 0),
+	('content answer test 22', 1, 0),
+	('content answer test 18', 1, 0),
+	('content answer test 6', 7	, 1),
+	('content answer test 7', 6	, 1),
+	('content answer test 8', 12, 1),
+	('content answer test 9', 2	, 1),
+	('content answer test 10', 2, 1),
+	('content answer test 11', 2, 1),
+	('content answer test 12', 14, 0),
+	('content answer test 13', 13, 1),
+	('content answer test 14', 15, 0),
+	('content answer test 15', 11, 1),
+	('content answer test 16', 17, 1),
+	('content answer test 17', 16, 1);
 SELECT * FROM Answer;
-
+DROP TABLE IF EXISTS Exam;
 CREATE TABLE IF NOT EXISTS Exam(
 exam_id           MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 code_ex           CHAR(30) UNIQUE KEY NOT NULL,
@@ -165,18 +267,31 @@ title             VARCHAR(30) NOT NULL,
 CateQuestion_id   TINYINT UNSIGNED NOT NULL,
 duration          TINYINT NOT NULL,
 Creator_id        INT UNSIGNED NOT NULL,
-Create_date       DATE NOT NULL,
+Create_date       DATETIME DEFAULT NOW(),
 FOREIGN KEY (cateQuestion_id) REFERENCES CategoryQuestion(CateQuestion_id),
 FOREIGN KEY (Creator_id) REFERENCES `Account`(Account_id)
 );
 -- insert data for table Exam
-INSERT INTO	Exam ( code_ex, title, CateQuestion_id, duration, Creator_id, Create_date  )
+INSERT INTO	Exam ( code_ex, title, CateQuestion_id, duration, Creator_id  )
 VALUES
-('VTIR33001', 'Đề thi Java', 1, 60, 5, '2018-12-03'),
-('VTIR33002', 'Đề thi Ruby', 2, 90, 2,'2019-11-09' ),
-('VTIR33003', 'Đề thi .NET', 3, 60, 1,'2018-12-24'),
-('VTIR33004', 'Đề thi Postman', 1, 70, 3,'2018-01-05'),
-('VTIR33005', 'Đề thi SQL', 1, 120, 4,'2018-02-08');
+    ('RB'	, 'title ruby'		, 5		, 50	, 1	),
+	('VB'	, 'title vb 1'		, 6		, 120	, 3	),
+	('JS'	, 'title exam js'	, 8		, 60	, 2	),
+	('PM'	, 'title postman'	, 4		, 120	, 6	),
+	('SQ'	, 'title sql exam'	, 3		, 45	, 3	),
+	('C#'	, 'title exam C#'	, 7		, 15	, 5	),
+	('PH'	, 'title php'		, 9		, 50	, 11),
+	('PT'	, 'title python'	, 10	, 120	, 13),
+	('JQ'	, 'title jquery'	, 11	, 60	, 12),
+	('RC'	, 'title react'		, 12	, 120	, 6	),
+	('HT'	, 'title html'		, 13	, 45	, 13),
+	('CCS'	, 'title css'		, 14	, 120	, 15),
+	('C+'	, 'title c++'		, 15	, 60	, 12),
+	('C'	, 'title C'			, 16	, 120	, 16),
+	('BT'	, 'title Bootstrap'	, 17	, 45	, 13),
+	('AG'	, 'Angular'			, 18	, 120	, 15),
+	('JN'	, 'Json'			, 19	, 120	, 15),
+	('AJ'	, 'Ajax'			, 20	, 120	, 15);
 SELECT * FROM Exam;
 
 CREATE TABLE IF NOT EXISTS ExamQuestion(
@@ -188,18 +303,34 @@ FOREIGN KEY (quest_id) REFERENCES Questions(quest_id)
 -- insert data for table ExamQuestion
 INSERT INTO ExamQuestion(exam_id , quest_id )
 VALUES		
-( 1 , 5 ),
-( 2 , 2 ),
-( 3 , 1 ),
-( 4 , 3 ),
-( 5 , 4 );
+    (1	, 4),
+	(2	, 7),
+	(3	, 6),
+	(4	, 2),
+	(5	, 3),
+	(6	, 6),
+	(10	, 8),
+	(11	, 11),
+	(12	, 9),
+	(13	, 11),
+	(14	, 14),
+	(15	, 16),
+	(16	, 12),
+	(7	, 15),
+    (17	, 13),
+    (18	, 16);
 SELECT * FROM ExamQuestion;
 
 -- ASS4:
--- Q1: 
+-- Q1: Viết lệnh để lấy ra danh sách nhân viên và thông tin phòng ban của họ
+
+SELECT Ac.fullname, D.* 
+FROM `Account` Ac 
+JOIN Department D ON Ac.Department_id = D.Department_id;
+
 -- Q2: lấy ra thông tin account được tạo sau ngày 20/12/2010
-select * from `account`
-where '2010-12-20' < createdate;
+SELECT * FROM `account`
+WHERE '2010-12-20' < createdate;
 
 -- Q3: lấy ra thông tin của tất cả developers 
 SELECT `account`.* , `position`.*
@@ -209,69 +340,102 @@ ON `account`.Position_id=`position`.Position_id
 WHERE position.Position_Name = 'Dev';
 
 -- Q4: danh sách phòng ban có số nhân viên > 3
-SELECT Department_Name , COUNT(ac.Department_id) Số_Nhân_Viên
-FROM Department de
+SELECT D.* , COUNT(ac.Department_id) Số_Nhân_Viên
+FROM Department D
 INNER JOIN `Account` ac
-ON de.Department_id = ac.Department_id
+ON D.Department_id = ac.Department_id
 GROUP BY Department_name
 HAVING COUNT(ac.Department_id) >3 ;
 
 -- Q5: danh sách câu hỏi được sử dụng trong đề thi nhiều nhất
-SELECT Type_name Dạng_Câu_Hỏi , COUNT(que.Type_id) SỐ_BÀI
-FROM Questions que
-INNER JOIN TypeQuestion typ USING (Type_id)
-GROUP BY Type_name
-HAVING MAX(SỐ_BÀI)
-LIMIT 1;
-
-SELECT * FROM typequestion;
+SELECT Q.quest_id, Q.Content, COUNT(EQ.exam_id) AS 'Số bài thi'
+ FROM Questions AS Q LEFT JOIN ExamQuestion AS EQ ON Q.quest_id = EQ.quest_id
+ GROUP BY Q.quest_id
+ HAVING COUNT(EQ.quest_id) = (
+	 SELECT MAX(bangtam.dem)
+	 FROM (
+		 SELECT COUNT(ExamQuestion.exam_id) AS dem
+		 FROM ExamQuestion
+		 GROUP BY ExamQuestion.quest_id
+         ) 	AS bangtam		);
 
 
 -- Q6: thống kê mỗi CategoryQuestion được sử dụng trong bao nhiêu Questions
 
-SELECT Type_name DẠNG_CÂU_HỎI , COUNT(que.Type_id) SỐ_LẦN_DÙNG
-FROM TypeQuestion typ
-JOIN Questions que USING (Type_id)
-GROUP BY Type_name;
+SELECT CQ.CateQuestion_id, CQ.CateQuestion_name, COUNT(Q.quest_id) AS 'Số lượng câu hỏi'
+FROM CategoryQuestion CQ LEFT JOIN Questions Q 
+ON CQ.CateQuestion_id = Q.CateQuestion_id
+GROUP BY CQ.CateQuestion_id;
 
 -- Q7: thống kê mỗi question được sử dụng bao nhiêu lần trong exam
-SELECT CateQuestion_name AS CÂU_HỎI_MÔN , COUNT(ex.CateQuestion_id) AS SỐ_ĐỀ_THI_CÓ
-FROM CategoryQuestion AS cq
-JOIN Exam AS ex
-ON ex.CateQuestion_id = cq.CateQuestion_id
-GROUP BY CateQuestion_name;
+
+SELECT Q.*, COUNT(EQ.exam_id) AS 'Số lần sử dụng'
+FROM Questions Q LEFT JOIN ExamQuestion EQ
+ON Q.quest_id = EQ.quest_id
+GROUP BY Q.quest_id;
 
 -- Q8: lấy ra question có nhiều câu trả lời nhất
-SELECT q.Content , COUNT(a.quest_id) SL_Quest
-FROM Questions AS q
-JOIN Answer AS a USING(quest_id)
-GROUP BY q.Content
-ORDER BY SL_Quest DESC
-LIMIT 1 ;
+SELECT Q.quest_id, Q.Content, COUNT(A.ans_id) AS 'Só lượng Question'
+FROM Questions Q JOIN Answer A
+ON Q.quest_id = A.quest_id 
+GROUP BY Q.quest_id 
+HAVING COUNT(Q.quest_id) = (
+				SELECT MAX(question_count)
+                FROM ( 
+					SELECT COUNT(A.ans_id) AS question_count FROM Questions Q JOIN Answer A
+						ON Q.quest_id = A.quest_id 
+                        GROUP BY Q.quest_id )
+                        AS count);
 
 -- Q9: thống kê số lượng account trong mỗi group
-SELECT Group_name , COUNT(gr.Creator_id) , CONCAT(gr.Creator_id)
+SELECT Group_name , COUNT(gr.Creator_id) 
 FROM `group` AS gr
 JOIN  GroupAccount AS grac
 ON grac.Group_id = gr.Group_id
 GROUP BY Group_name;
+-- Cách 2
+SELECT G.*, COUNT(GA.Account_id) AS 'Số lượng account'
+FROM GroupAccount GA RIGHT JOIN `Group` G
+ON GA.group_id = G.group_id
+GROUP BY G.group_id;
 
 -- Q10: Tìm chức vụ có ít người nhất
-SELECT Position_name , COUNT(po.Position_id) AS SỐ_ACCOUNT
-FROM `Position` AS po
-JOIN `Account` AS ac USING (Position_id)
-GROUP BY po.Position_name
-HAVING COUNT(SỐ_ACCOUNT)
-ORDER BY SỐ_ACCOUNT ASC
-LIMIT 1;
+-- 1: 
+      SELECT         
+    P.*, COUNT(P.Position_id) AS 'Số lượng chức vụ'
+FROM
+    `Account` A RIGHT JOIN `Position` P
+       ON A.Position_id = P.Position_id
+GROUP BY A.Position_id ;
+
+
+SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+ 
+ SELECT P.Position_id, P.Position_name, COUNT(p.Position_id) AS 'Số lượng chức vụ'
+ FROM `Account` A RIGHT JOIN `Position` P
+ ON A.Position_id = P.Position_id
+ GROUP BY A.Position_id 
+ HAVING COUNT(A.Position_id) = (
+			SELECT MIN(position_count)
+				FROM ( 
+					SELECT COUNT(A.Position_id) AS position_count 
+                    FROM `Account` A RIGHT JOIN `Position` p
+                    ON A.Position_id =p.Position_id 
+                    GROUP BY A.position_id)
+                    AS counts);
+                    
+
+
+                    
+			
 
 -- Q11: thống kê mỗi phòng ban có bao nhiêu DEV, TEST, PM, Scrum Master
-SELECT de.Department_name , Position_name , COUNT(ac.Position_id)
-FROM `Account` AS ac 
-JOIN Department AS de ON de.Department_id = ac.Department_id
-JOIN Position AS po ON po.Position_id = ac.Position_id
-GROUP BY de.Department_name, po.Position_id;
 
+SELECT bang_tam.*, COUNT(a.Account_id) FROM 
+			(SELECT * FROM Department d CROSS JOIN `position` p) AS bang_tam
+				LEFT JOIN `Account` a
+					ON bang_tam.Department_id = a.Department_id AND bang_tam.Position_id = a.Position_id
+						GROUP BY bang_tam.Department_name, bang_tam.Position_id;
 -- Q12: Lấy thông tin chi tiết của câu hỏi bao gồm:
 -- thông tin cơ bản của question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, …
 SELECT Type_name, que.Content, que.Creator_id , an.Content, an.Is_correct
@@ -294,7 +458,7 @@ WHERE ga.Account_id is NULL;
 SELECT * FROM Questions AS que
 LEFT JOIN Answer AS an
 ON an.quest_id = que.quest_id
-WHERE an.quest_id IS NOT NULL;
+WHERE an.quest_id IS NULL;
 
 -- Q17: 
 -- a: lấy ra account thuộc nhóm 1
